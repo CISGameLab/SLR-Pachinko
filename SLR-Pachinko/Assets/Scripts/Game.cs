@@ -39,8 +39,6 @@ public class Game : MonoBehaviour
 	{
 		sounds = GetComponents<AudioSource>();
 
-		RenderSettings.ambientLight = Color.black;
-
 		highScore = PlayerPrefs.GetInt("score");
 		highScoreMain.text = "High Score: " + highScore.ToString();
 		highScoreResults.text = "High Score: " + highScore.ToString();
@@ -67,7 +65,8 @@ public class Game : MonoBehaviour
 	public void SetScore(int add)
 	{
 		score += add;
-		scoreText.text = score.ToString();
+		int displayScore = (int) Mathf.Floor(score / 50);
+		scoreText.text = displayScore.ToString();
 	}
 
 	public void ResetScore()
